@@ -98,6 +98,7 @@ inline std::shared_ptr<Reaction> make_reaction(ARGS... args){
 int main(int argc, char **argv) {
 
   sycl::device device{};
+  std::cout << "Using " << device.get_info<sycl::info::device::name>() << std::endl;
   sycl::queue queue{device};
 
   const int N = 32;
