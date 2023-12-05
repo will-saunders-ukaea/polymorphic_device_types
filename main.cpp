@@ -1,9 +1,7 @@
 #include <iostream>
-#include <chrono>
-#include <csignal>
-#include <string>
 #include <CL/sycl.hpp>
 #include <memory>
+#include <numeric>
 
 using namespace cl;
 

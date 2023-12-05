@@ -1,14 +1,14 @@
 cmake_minimum_required(VERSION 3.14)
 
 project(
-  NESO-Workspace-hybrid-move
+  reactions
   VERSION 0.0.1
   LANGUAGES CXX C)
 
 set(CMAKE_CXX_STANDARD 17)
 
 # find MPI
-find_package(MPI REQUIRED)
+#find_package(MPI REQUIRED)
 #find_package(NESO-PARTICLES REQUIRED)
 
 # Include hipSYCL
@@ -46,18 +46,16 @@ endif()
 set(CMAKE_CXX_FLAGS_RELWITHDEBINFO "-g -DNDEBUG -O3")
 message(STATUS ${CMAKE_CXX_FLAGS_RELWITHDEBINFO})
 
-set(EXECUTABLE hybrid_move_bench)
+set(EXECUTABLE reactions)
 set(EXECUTABLE_SOURCE main.cpp)
-
-find_package(MPI REQUIRED)
 
 add_executable(${EXECUTABLE} ${EXECUTABLE_SOURCE})
 
-target_include_directories(${EXECUTABLE} PRIVATE ${NESO_PARTICLES_INCLUDE_PATH}
-                                                 ${MPI_CXX_INCLUDE_PATH})
-target_link_libraries(
-  ${EXECUTABLE}
-  PRIVATE ${MPI_CXX_LINK_FLAGS} ${MPI_CXX_LIBRARIES})
+#target_include_directories(${EXECUTABLE} PRIVATE ${NESO_PARTICLES_INCLUDE_PATH}
+#                                                 ${MPI_CXX_INCLUDE_PATH})
+#target_link_libraries(
+#  ${EXECUTABLE}
+#  PRIVATE ${MPI_CXX_LINK_FLAGS} ${MPI_CXX_LIBRARIES})
 #${NESO_PARTICLES_LIBRARIES} ${NESO_PARTICLES_LINK_FLAGS})
 
 # define the test executable as a sycl target
